@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>TO DO LIST</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <style>
       body {
         display: flex;
@@ -21,15 +23,33 @@
       <h1>TO DO LIST</h1>
       <form method="post">
         <input type="text" name="task_name" placeholder="Title..." />
-        <input type="text" name="task_description" placeholder="Description..." required />
-        <button  type="submit">Add</button>
+        <input
+          type="text"
+          name="task_description"
+          placeholder="Description..."
+          required
+        />
+        <button type="submit">Add</button>
       </form>
-      <ul>
-         
-         {% for task in tasks %}
-         <li>{{ task['name'] }}: {{ task['description'] }}</li>
-     {% endfor %}
-      </ul>
+
+      <table>
+        <tr>
+          <th>Nombre Tarea</th>
+          <th>Descripción Tarea</th>
+        </tr>
+        <!-- Se situa fuera de las etiquetas -->
+        {% for task in tasks %}
+        <tr>
+          <td>{{ task['name'] }}</td>
+          <td>{{ task['description'] }}</td>
+          <!-- Iconos de la libreria Fontawesome -->
+          <td>
+            <a href="#"><i class="fas fa-edit"></i></a>
+            <a href="#"><i class="fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
   </body>
 </html>
