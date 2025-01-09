@@ -20,7 +20,7 @@ def form():
 
     # Mostrar JSON donde contienen las tareas es mejor tenerlo afuera de template (porque en templates irán los archivos HTML)
 
-    with open ('data/tasks.json') as  file :
+    with open ('data/tasks.json', encoding='utf-8') as  file :
         tasks=json.load(file)
 
     return render_template("form.html", tasks=tasks)
