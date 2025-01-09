@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TO DO LIST</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TO DO LIST</h1>
+      <form method="post">
+        <input type="text" id="myInput" placeholder="Title..." />
+        <button  onclick="newElement()" type="submit">Add</button>
+      </form>
+      <ul>
+         
+         {% for task in tasks %}
+         <li>{{ task['name'] }}: {{ task['description'] }}</li>
+     {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
