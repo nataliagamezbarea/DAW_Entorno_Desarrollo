@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LISTA DE TAREAS</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="contenedor">
+      <h1>LISTA DE TAREAS</h1>
+      <form method="post">
+        <div class="tarea-inputs">
+          <div class="input-group">
+            <input
+              type="text"
+              name="task_name"
+              placeholder="Añadir una tarea"
+            />
+            <input
+              type="text"
+              name="task_description"
+              placeholder="Descripción..."
+              required
+            />
+          </div>
+        </div>
+        <button type="submit">Añadir</button>
+      </form>
+
+      <table>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+        <!-- Se utiliza para mostrar las tareas del json -->
+        {% for task in tareas %}
+        <form action="/actualizar/{{ task['id'] }}" method="POST">
+          <tr>
+            <td class="info-task">
+              <!-- Enseñar el nombre del json variables en ingles para distingir la comparación como son inputs muy especificos añado el style directamente en el código -->
+              <span class="task-name">{{ task['name'] }}</span>
+              <input
+                class="nombre_tarea"
+                type="text"
+                name="task_name"
+                value="{{ task['name'] }}"
+                required
+                style="display: none;"
+              />
+            </td>
+            <td class="info-task">
+              <span class="task-description">{{ task['description'] }}</span>
+               <!-- Value es interesante para que el usuario no tenga que volver a escribir si desea añadir un caracter o letra al valor actual sin volver a escribirlo ,  le pasamos el valor del JSON -->
+              <input
+                class="descripcion_tarea"
+                type="text"
+                name="task_description"
+                value="{{ task['description'] }}"
+                required
+                style="display: none;"
+              />
+            </td>
+            <!-- Botones de acciones mediante font-awesome -->
+            <td class="acciones">
+              <button class="actualizar_tarea" type="submit" style="display: none;">
+                <i class="fas fa-save"></i>
+              </button>
+              <a href="#" class="button-actualizar_tarea">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a href="#" class="button-eliminar_tarea" data-task-id="{{ task['id'] }}">
+                <i class="fas fa-trash-alt"></i>
+              </a>   
+              <!-- Si el input está checked (el valor es completado)                       -->
+              <input type="checkbox" data-task-id="{{ task['id'] }}" {% if task['completed'] %}checked{% endif %} onchange="actualizarEstadoTarea(this)" />
+            </td>
+          </tr>
+        </form>
+        {% endfor %}
+        <!-- termina el json -->
+      </table>
+
+    </div>
+
+    <!-- He dividido en partes las diferentes funcionalidades : pop-up al intentar eliminar una tarea , para que desaparezcan los valores y aparezcan los input y finalmente eliminar-tarea y actualizar tarea ya que el post se realiza mediante / (el index) del backend -->
+    <script type="module" src="{{ url_for('static', filename='js/sweetalert2.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/alternarVisibilidadElementos.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/eliminar-tarea.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/actualizar-tarea-visible.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/estado-tarea.js') }}"></script>
+  </body>
+</html>

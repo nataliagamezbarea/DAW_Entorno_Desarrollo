@@ -1,36 +1,205 @@
+:root {
+  --color-primario: #2c3e50;
+  --color-secundario: #038c55;
+  --color-btn-actualizar: #ff9800;
+}
+
 body {
+  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.contenedor {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
 }
 
 form {
   display: flex;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.tarea-inputs {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 100%;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+button {
+  padding: 10px;
+  background-color: var(--color-secundario);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #027a47;
 }
 
 table {
+  width: 100%;
+  margin-top: 20px;
   border-collapse: collapse;
 }
 
-table td,
-table th {
-  border: 1px solid #ddd;
-  padding: 8px;
+table th, 
+table td {
+  text-align: center;
+  vertical-align: middle; 
+  border-bottom: 1px solid #ddd;
 }
 
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+table th {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 15px;
+}
+
+table td {
+  padding: 12px;
 }
 
 table tr:hover {
-  background-color: #ddd;
+  background-color: rgba(251, 242, 242, 0.9);
 }
 
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04aa6d;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-primario);
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-secundario);
+}
+
+input[type="checkbox"]:checked::before {
+  content: '\2713';
+  position: absolute;
+  top: 0;
+  left: 4px;
   color: white;
+  font-size: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+button.boton_actualizar {
+  background-color: var(--color-btn-actualizar);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 30px;
+}
+
+button.boton_actualizar:hover {
+  background-color: #e68900;
+}
+
+button.boton_actualizar i {
+  font-size: 1.2em;
+  color: white;
+  margin-right: 8px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.nombre_tarea,
+.descripcion_tarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.acciones {
+  text-align: center;
+}
+
+button,
+a {
+  margin: 0 5px;
+}
+
+.boton_actualizar {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.boton_actualizar:hover {
+  background-color: #45a049;
+}
+
+.acciones i {
+  cursor: pointer;
 }
