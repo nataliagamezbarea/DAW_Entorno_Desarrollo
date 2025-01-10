@@ -1,3 +1,9 @@
+# CRUD de Tareas con Flask y SweetAlert2
+
+Este proyecto implementa un sistema CRUD de tareas utilizando Flask como backend, SweetAlert2 para las interacciones con el usuario y un archivo JSON como base de datos para almacenar las tareas.
+
+![image](https://github.com/user-attachments/assets/c0c67ffd-d70c-4708-95d1-adbbe9285754)
+
 # Configuración de Entorno Virtual en Python
 
 Un entorno virtual permite aislar las dependencias de tu proyecto de Python, asegurando que no interfieran con otras aplicaciones o proyectos. Aquí te explicamos cómo configurarlo.
